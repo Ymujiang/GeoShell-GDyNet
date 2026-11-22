@@ -1,0 +1,38 @@
+{
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "batch_size": 16,
+  "peo_profiling": {
+    "canonical_h16": {
+      "n_params": 5651,
+      "infer_ms_per_batch": 13.714,
+      "infer_frames_per_s": 1166.7,
+      "infer_peak_vram_mb": 811.72,
+      "train_ms_per_batch": 84.638,
+      "train_frames_per_s": 189.0,
+      "train_peak_vram_mb": 3552.11
+    },
+    "canonical_pm_h46": {
+      "n_params": 25691,
+      "infer_ms_per_batch": 26.817,
+      "infer_frames_per_s": 596.6,
+      "infer_peak_vram_mb": 1554.62,
+      "train_ms_per_batch": 139.752,
+      "train_frames_per_s": 114.5,
+      "train_peak_vram_mb": 7399.13
+    },
+    "geoshell_h32": {
+      "n_params": 25561,
+      "infer_ms_per_batch": 20.167,
+      "infer_frames_per_s": 793.4,
+      "infer_peak_vram_mb": 1237.38,
+      "train_ms_per_batch": 106.303,
+      "train_frames_per_s": 150.5,
+      "train_peak_vram_mb": 5716.28
+    }
+  },
+  "invariance_checks": {
+    "permutation_max_err": 0.0,
+    "so3_rotation_max_err_10trials": 1.1920928955078125e-07,
+    "o3_reflection_max_err": 0.0
+  }
+}

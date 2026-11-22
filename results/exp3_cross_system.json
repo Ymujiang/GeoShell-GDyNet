@@ -1,0 +1,465 @@
+{
+  "siau": {
+    "canonical_h16": {
+      "n_params": 5651,
+      "test_vamp2_mean": 3.79453,
+      "test_vamp2_sd": 0.01417,
+      "test_ck_mean": 0.00613,
+      "test_ck_sd": 0.00098,
+      "q_tet_corr_mean": 0.7107,
+      "runs": [
+        {
+          "seed": 0,
+          "val_vamp2": 3.82906,
+          "test_vamp2": 3.79938,
+          "test_ck_rmse": 0.00721,
+          "its_ns": [
+            45.87,
+            94.86,
+            365.27
+          ],
+          "q_tet_corr": 0.6845,
+          "states": [
+            {
+              "state": 0,
+              "pop": 0.1185,
+              "mean_abs_z_mid": 14.457,
+              "mean_q_tet": 0.8217
+            },
+            {
+              "state": 1,
+              "pop": 0.7305,
+              "mean_abs_z_mid": 11.168,
+              "mean_q_tet": 0.6577
+            },
+            {
+              "state": 2,
+              "pop": 0.076,
+              "mean_abs_z_mid": 15.388,
+              "mean_q_tet": 0.8652
+            },
+            {
+              "state": 3,
+              "pop": 0.075,
+              "mean_abs_z_mid": 15.07,
+              "mean_q_tet": 0.8499
+            }
+          ],
+          "time_s": 119.2
+        },
+        {
+          "seed": 1,
+          "val_vamp2": 3.82719,
+          "test_vamp2": 3.77858,
+          "test_ck_rmse": 0.0053,
+          "its_ns": [
+            45.4,
+            81.67,
+            364.31
+          ],
+          "q_tet_corr": 0.7275,
+          "states": [
+            {
+              "state": 0,
+              "pop": 0.2349,
+              "mean_abs_z_mid": 12.437,
+              "mean_q_tet": 0.7214
+            },
+            {
+              "state": 1,
+              "pop": 0.3494,
+              "mean_abs_z_mid": 10.713,
+              "mean_q_tet": 0.6344
+            },
+            {
+              "state": 2,
+              "pop": 0.1857,
+              "mean_abs_z_mid": 13.283,
+              "mean_q_tet": 0.7626
+            },
+            {
+              "state": 3,
+              "pop": 0.23,
+              "mean_abs_z_mid": 13.217,
+              "mean_q_tet": 0.759
+            }
+          ],
+          "time_s": 116.8
+        },
+        {
+          "seed": 2,
+          "val_vamp2": 3.82868,
+          "test_vamp2": 3.80564,
+          "test_ck_rmse": 0.00587,
+          "its_ns": [
+            48.5,
+            104.46,
+            424.74
+          ],
+          "q_tet_corr": 0.7201,
+          "states": [
+            {
+              "state": 0,
+              "pop": 0.2668,
+              "mean_abs_z_mid": 11.512,
+              "mean_q_tet": 0.6745
+            },
+            {
+              "state": 1,
+              "pop": 0.3228,
+              "mean_abs_z_mid": 12.486,
+              "mean_q_tet": 0.7228
+            },
+            {
+              "state": 2,
+              "pop": 0.1693,
+              "mean_abs_z_mid": 11.952,
+              "mean_q_tet": 0.6969
+            },
+            {
+              "state": 3,
+              "pop": 0.2412,
+              "mean_abs_z_mid": 12.633,
+              "mean_q_tet": 0.7301
+            }
+          ],
+          "time_s": 116.6
+        }
+      ]
+    },
+    "canonical_pm_h46": {
+      "n_params": 25691,
+      "test_vamp2_mean": 3.81099,
+      "test_vamp2_sd": 0.0182,
+      "test_ck_mean": 0.00513,
+      "test_ck_sd": 0.00102,
+      "q_tet_corr_mean": 0.6695,
+      "runs": [
+        {
+          "seed": 0,
+          "val_vamp2": 3.83587,
+          "test_vamp2": 3.80143,
+          "test_ck_rmse": 0.00396,
+          "its_ns": [
+            50.09,
+            94.63,
+            338.66
+          ],
+          "q_tet_corr": 0.6562,
+          "states": [
+            {
+              "state": 0,
+              "pop": 0.1815,
+              "mean_abs_z_mid": 13.931,
+              "mean_q_tet": 0.7938
+            },
+            {
+              "state": 1,
+              "pop": 0.2844,
+              "mean_abs_z_mid": 10.464,
+              "mean_q_tet": 0.6227
+            },
+            {
+              "state": 2,
+              "pop": 0.3167,
+              "mean_abs_z_mid": 12.298,
+              "mean_q_tet": 0.7132
+            },
+            {
+              "state": 3,
+              "pop": 0.2174,
+              "mean_abs_z_mid": 12.751,
+              "mean_q_tet": 0.7373
+            }
+          ],
+          "time_s": 189.4
+        },
+        {
+          "seed": 1,
+          "val_vamp2": 3.85111,
+          "test_vamp2": 3.83198,
+          "test_ck_rmse": 0.00585,
+          "its_ns": [
+            55.91,
+            118.32,
+            461.86
+          ],
+          "q_tet_corr": 0.69,
+          "states": [
+            {
+              "state": 0,
+              "pop": 0.1625,
+              "mean_abs_z_mid": 16.183,
+              "mean_q_tet": 0.9048
+            },
+            {
+              "state": 1,
+              "pop": 0.1477,
+              "mean_abs_z_mid": 15.596,
+              "mean_q_tet": 0.8794
+            },
+            {
+              "state": 2,
+              "pop": 0.5231,
+              "mean_abs_z_mid": 9.464,
+              "mean_q_tet": 0.5718
+            },
+            {
+              "state": 3,
+              "pop": 0.1667,
+              "mean_abs_z_mid": 13.721,
+              "mean_q_tet": 0.7875
+            }
+          ],
+          "time_s": 189.2
+        },
+        {
+          "seed": 2,
+          "val_vamp2": 3.84201,
+          "test_vamp2": 3.79956,
+          "test_ck_rmse": 0.00557,
+          "its_ns": [
+            49.63,
+            88.7,
+            378.51
+          ],
+          "q_tet_corr": 0.6624,
+          "states": [
+            {
+              "state": 0,
+              "pop": 0.5893,
+              "mean_abs_z_mid": 10.08,
+              "mean_q_tet": 0.6028
+            },
+            {
+              "state": 1,
+              "pop": 0.1358,
+              "mean_abs_z_mid": 15.545,
+              "mean_q_tet": 0.8766
+            },
+            {
+              "state": 2,
+              "pop": 0.1857,
+              "mean_abs_z_mid": 14.409,
+              "mean_q_tet": 0.8205
+            },
+            {
+              "state": 3,
+              "pop": 0.0892,
+              "mean_abs_z_mid": 16.192,
+              "mean_q_tet": 0.9044
+            }
+          ],
+          "time_s": 189.5
+        }
+      ]
+    },
+    "geoshell_h32": {
+      "n_params": 25561,
+      "test_vamp2_mean": 3.88547,
+      "test_vamp2_sd": 0.01294,
+      "test_ck_mean": 0.00446,
+      "test_ck_sd": 0.00128,
+      "q_tet_corr_mean": 0.5754,
+      "runs": [
+        {
+          "seed": 0,
+          "val_vamp2": 3.89126,
+          "test_vamp2": 3.87284,
+          "test_ck_rmse": 0.00301,
+          "its_ns": [
+            68.03,
+            178.55,
+            1239.24
+          ],
+          "q_tet_corr": 0.5975,
+          "states": [
+            {
+              "state": 0,
+              "pop": 0.1347,
+              "mean_abs_z_mid": 15.681,
+              "mean_q_tet": 0.8747
+            },
+            {
+              "state": 1,
+              "pop": 0.2515,
+              "mean_abs_z_mid": 9.037,
+              "mean_q_tet": 0.5504
+            },
+            {
+              "state": 2,
+              "pop": 0.369,
+              "mean_abs_z_mid": 10.727,
+              "mean_q_tet": 0.6384
+            },
+            {
+              "state": 3,
+              "pop": 0.2449,
+              "mean_abs_z_mid": 15.637,
+              "mean_q_tet": 0.8802
+            }
+          ],
+          "time_s": 155.3
+        },
+        {
+          "seed": 1,
+          "val_vamp2": 3.90166,
+          "test_vamp2": 3.88488,
+          "test_ck_rmse": 0.00545,
+          "its_ns": [
+            72.13,
+            224.11,
+            1228.12
+          ],
+          "q_tet_corr": 0.6034,
+          "states": [
+            {
+              "state": 0,
+              "pop": 0.2839,
+              "mean_abs_z_mid": 15.475,
+              "mean_q_tet": 0.8712
+            },
+            {
+              "state": 1,
+              "pop": 0.3849,
+              "mean_abs_z_mid": 9.842,
+              "mean_q_tet": 0.5926
+            },
+            {
+              "state": 2,
+              "pop": 0.2382,
+              "mean_abs_z_mid": 10.664,
+              "mean_q_tet": 0.6346
+            },
+            {
+              "state": 3,
+              "pop": 0.093,
+              "mean_abs_z_mid": 15.588,
+              "mean_q_tet": 0.8682
+            }
+          ],
+          "time_s": 154.4
+        },
+        {
+          "seed": 2,
+          "val_vamp2": 3.90695,
+          "test_vamp2": 3.89869,
+          "test_ck_rmse": 0.00491,
+          "its_ns": [
+            142.1,
+            241.61,
+            2184.7
+          ],
+          "q_tet_corr": 0.5252,
+          "states": [
+            {
+              "state": 0,
+              "pop": 0.0382,
+              "mean_abs_z_mid": 15.201,
+              "mean_q_tet": 0.8484
+            },
+            {
+              "state": 1,
+              "pop": 0.2842,
+              "mean_abs_z_mid": 15.574,
+              "mean_q_tet": 0.8635
+            },
+            {
+              "state": 2,
+              "pop": 0.2367,
+              "mean_abs_z_mid": 11.488,
+              "mean_q_tet": 0.6826
+            },
+            {
+              "state": 3,
+              "pop": 0.4409,
+              "mean_abs_z_mid": 10.083,
+              "mean_q_tet": 0.6077
+            }
+          ],
+          "time_s": 154.8
+        }
+      ]
+    }
+  },
+  "li2s": {
+    "canonical_h16": {
+      "test_vamp2_mean": 1.62776,
+      "test_vamp2_sd": 0.00084,
+      "test_ck_mean": 0.0176,
+      "its_ps_mean": 42.96,
+      "its_ps_sd": 0.12,
+      "runs": [
+        {
+          "seed": 0,
+          "test_vamp2": 1.62845,
+          "test_ck_rmse": 0.01713,
+          "its_ps": 43.06,
+          "pops": [
+            0.5505,
+            0.4495
+          ]
+        },
+        {
+          "seed": 1,
+          "test_vamp2": 1.62802,
+          "test_ck_rmse": 0.01741,
+          "its_ps": 42.99,
+          "pops": [
+            0.4946,
+            0.5054
+          ]
+        },
+        {
+          "seed": 2,
+          "test_vamp2": 1.62682,
+          "test_ck_rmse": 0.01827,
+          "its_ps": 42.82,
+          "pops": [
+            0.5875,
+            0.4124
+          ]
+        }
+      ]
+    },
+    "geoshell_h32": {
+      "test_vamp2_mean": 1.62866,
+      "test_vamp2_sd": 0.00099,
+      "test_ck_mean": 0.01754,
+      "its_ps_mean": 43.09,
+      "its_ps_sd": 0.15,
+      "runs": [
+        {
+          "seed": 0,
+          "test_vamp2": 1.62928,
+          "test_ck_rmse": 0.01707,
+          "its_ps": 43.18,
+          "pops": [
+            0.5573,
+            0.4427
+          ]
+        },
+        {
+          "seed": 1,
+          "test_vamp2": 1.62919,
+          "test_ck_rmse": 0.01732,
+          "its_ps": 43.17,
+          "pops": [
+            0.5936,
+            0.4064
+          ]
+        },
+        {
+          "seed": 2,
+          "test_vamp2": 1.62752,
+          "test_ck_rmse": 0.01824,
+          "its_ps": 42.92,
+          "pops": [
+            0.3644,
+            0.6356
+          ]
+        }
+      ]
+    }
+  }
+}
