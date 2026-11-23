@@ -1,6 +1,6 @@
 # GeoShell-GDyNet
 
-**Multi-Hop Jumping Knowledge, Distance-Aware First-Shell Attention, and SO(3)-Invariant Multipole Geometry for Graph Dynamical Networks**
+**Multi-Hop Jumping Knowledge, Target-Localized First-Shell Attention, and O(3)-Invariant Regularization for Graph Dynamical Networks**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](requirements.txt)
@@ -25,21 +25,24 @@
 | Model Variant | Params | Traj B VAMP-2 | Traj C VAMP-2 | Traj D VAMP-2 | Traj E VAMP-2 | **4-Traj Macro VAMP-2 ($\uparrow$)** | **CK RMSE ($\downarrow$)** | Collapse Rate |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Canonical `GDyNet` (`H=16`) | 5,651 | 2.7728 ± 0.0154 | 2.7802 ± 0.0187 | 2.6343 ± 0.0163 | 2.7482 ± 0.0186 | 2.7339 ± 0.0171 | 0.0523 ± 0.0014 | 20% |
+| Canonical Sum (`H=16`) | 5,651 | 2.7695 ± 0.0100 | 2.7804 ± 0.0109 | 2.6298 ± 0.0124 | 2.7493 ± 0.0119 | 2.7323 ± 0.0109 | 0.0585 ± 0.0154 | 0% |
 | Canonical Param-Matched (`H=46`) | 25,691 | 2.7903 ± 0.0110 | 2.8112 ± 0.0090 | 2.6582 ± 0.0099 | 2.7798 ± 0.0097 | 2.7599 ± 0.0092 | 0.0509 ± 0.0022 | 20% |
+| Canonical Sum PM (`H=46`) | 25,691 | 2.7892 ± 0.0224 | 2.8096 ± 0.0236 | 2.6584 ± 0.0184 | 2.7814 ± 0.0240 | 2.7597 ± 0.0214 | 0.0519 ± 0.0029 | 20% |
 | `GeoShell-GDyNet` (`H=16`, 3 seeds) | 8,377 | 2.8108 ± 0.0204 | 2.8367 ± 0.0242 | 2.6714 ± 0.0185 | 2.8019 ± 0.0182 | 2.7802 ± 0.0201 | **0.0488 ± 0.0004** | **0%** |
 | **`GeoShell-GDyNet` (`H=32`)** | 25,561 | **2.8306 ± 0.0113** | **2.8659 ± 0.0101** | **2.7014 ± 0.0109** | **2.8278 ± 0.0060** | **2.8064 ± 0.0081** | 0.0499 ± 0.0024 | **0%** |
 
-Across all 20 paired seed $\times$ trajectory evaluations, `GeoShell-GDyNet` (`H=32`) outperforms both `Canonical (H=16)` (paired $t = 16.560, p = 9.54 \times 10^{-13}$; Wilcoxon $p = 8.84 \times 10^{-5}$) and parameter-matched `Canonical PM (H=46)` (paired $t = 14.306, p = 1.26 \times 10^{-11}$; Wilcoxon $p = 1.91 \times 10^{-6}$).
+Across 5 random seeds (Welch *t*-test), `GeoShell-GDyNet` (`H=32`) significantly outperforms `Canonical (H=16)` ($p = 1.82 \times 10^{-4}$), `Canonical Sum (H=16)` ($p = 3.64 \times 10^{-6}$), `Canonical PM (H=46)` ($p = 3.14 \times 10^{-5}$), and `Canonical Sum PM (H=46)` ($p = 5.66 \times 10^{-3}$; paired 20-evaluation $p = 1.26 \times 10^{-11}$ vs `Canonical PM`). Replacing `reduce_mean` with `reduce_sum` alone recovers zero improvement because `BatchNorm1d` rescales constant-degree ($M=20$) sum outputs.
 
 ### 2. Controlled Ablation & Cross-System Validation
 
-- **Component Ablations (3-Seed PEO/LiTFSI 4-Traj Macro)**: Removing first-shell attention (`wo_shell_attn`, 20,185 params) causes the largest drop ($2.8064 \to 2.7648 \pm 0.0154$), removing multi-hop JK (`wo_jk`, 21,433 params) drops to $2.7873 \pm 0.0044$ (CK $0.0530$), and removing SO(3) multipole geometry (`wo_so3_geo`, 24,340 params) lowers VAMP-2 to $2.8001 \pm 0.0151$ while nearly doubling seed variance ($1.86\times$ SD). Extrapolating width to `H=64` (84,185 params) yields $2.8098 \pm 0.0181$ with degraded CK ($0.0523$) and $2.2\times$ higher variance.
-- **Si–Au Solid–Liquid Interface ($\tau = 3\text{ ns}$, 3 seeds)**: `GeoShell-GDyNet (H=32)` improves out-of-sample Test VAMP-2 from $3.7945 \pm 0.0142$ (`Canonical H=16`) and $3.8110 \pm 0.0182$ (`Canonical PM H=46`) to **$3.8855 \pm 0.0129$** while lowering CK RMSE ($0.0061 \to 0.0045$).
+- **Component Ablations (3-Seed PEO/LiTFSI 4-Traj Macro)**: Removing first-shell attention (`wo_shell_attn`, 20,185 params) causes the largest drop ($2.8064 \to 2.7648 \pm 0.0154$), removing multi-hop JK (`wo_jk`, 21,433 params) drops to $2.7873 \pm 0.0044$ (CK $0.0530$), and removing $O(3)$ multipole geometry (`wo_so3_geo`, 24,340 params) lowers VAMP-2 to $2.8001 \pm 0.0151$ while nearly doubling seed variance ($1.86\times$ SD). Extrapolating width to `H=64` (84,185 params) yields $2.8098 \pm 0.0181$ with degraded CK ($0.0523$) and $2.2\times$ higher variance.
+- **Si–Au Solid–Liquid Interface ($\tau = 3\text{ ns}$, 3 seeds)**: `GeoShell-GDyNet (H=32)` improves out-of-sample Test VAMP-2 from $3.7945 \pm 0.0142$ (`Canonical H=16`), $3.8110 \pm 0.0182$ (`Canonical PM H=46`), and $3.8162 \pm 0.0068$ (`Canonical Sum PM H=46`) to **$3.8855 \pm 0.0129$** ($3.8823 \pm 0.0063$ in the diagnostic run), while `wo_shell_attn` drops to $3.8349 \pm 0.0060$ and `wo_so3_geo` exhibits $3.7\times$ higher variance ($3.8951 \pm 0.0233$) with extreme $>4.6\,\mu\text{s}$ slow-mode overfitting. Signed-$z$ audits are recorded in `results/exp6a_siau_deep.json`.
 - **FCC Li–S Toy Lattice ($\tau = 10\text{ ps}$, 3 seeds)**: Reproduces the physical tetrahedral–octahedral relaxation timescale ($43.09 \pm 0.15$ ps vs $42.96 \pm 0.12$ ps canonical; Test VAMP-2 $1.6287$ vs $1.6278$).
 - **NVIDIA RTX 5080 Profiling (`bs=16`, PEO/LiTFSI)**: Compared with parameter-matched `Canonical PM (H=46)`, `GeoShell-GDyNet (H=32)` is **33.0% faster** at inference (`20.17` vs `26.82 ms/batch`, `793.4` vs `596.6 frames/s`), **31.4% faster** in training (`106.30` vs `139.75 ms/batch`), and uses **22.7% less peak training VRAM** (`5,716.28` vs `7,399.13 MB`).
 
 ![Ablation Decomposition and Si-Au Resolution](docs/figures/gdynet_ablation_and_geometry.png)
 ![Mechanistic Interpretability and RTX 5080 Profiling](docs/figures/gdynet_mechanistic_and_profiling.png)
+![PEO Kinetic ITS Convergence and Si-Au Spatial Audit](docs/figures/gdynet_kinetics_and_siau_audit.png)
 
 ---
 

@@ -23,12 +23,13 @@ class GaussianRBF(nn.Module):
 class CGCNNLayer(nn.Module):
     """Canonical gated CGCNN convolution layer matching Xie et al. (Nat. Commun. 2019)."""
 
-    def __init__(self, atom_fea_len: int, bond_fea_len: int, use_bn: bool = True):
+    def __init__(self, atom_fea_len: int, bond_fea_len: int, use_bn: bool = True, agg: str = "mean"):
         super().__init__()
         in_dim = 2 * atom_fea_len + bond_fea_len
         self.fc_core = nn.Linear(in_dim, atom_fea_len)
         self.fc_filter = nn.Linear(in_dim, 1)
         self.use_bn = use_bn
+        self.agg = agg
         if use_bn:
             self.bn_core = nn.BatchNorm1d(atom_fea_len)
             self.bn_out = nn.BatchNorm1d(atom_fea_len)
@@ -47,7 +48,7 @@ class CGCNNLayer(nn.Module):
             nbr_core = self.bn_core(nbr_core.reshape(-1, H)).reshape(B, N, M, H)
         nbr_filter = F.softmax(nbr_filter, dim=2)
         nbr_core = F.relu(nbr_core)
-        nbr_sumed = torch.mean(nbr_filter * nbr_core, dim=2)
+        nbr_sumed = torch.sum(nbr_filter * nbr_core, dim=2) if self.agg == "sum" else torch.mean(nbr_filter * nbr_core, dim=2)
         if self.use_bn:
             nbr_sumed = self.bn_out(nbr_sumed.reshape(-1, H)).reshape(B, N, H)
         return F.relu(atom_fea + nbr_sumed)
@@ -65,6 +66,7 @@ class CanonicalGDyNet(nn.Module):
         dmax: float = 7.0,
         step: float = 0.2,
         use_bn: bool = True,
+        agg: str = "mean",
     ):
         super().__init__()
         self.n_classes = n_classes
@@ -73,7 +75,7 @@ class CanonicalGDyNet(nn.Module):
         self.rbf = GaussianRBF(dmin=dmin, dmax=dmax, step=step, var=step)
         self.embedding = nn.Embedding(100, atom_fea_len)
         self.convs = nn.ModuleList(
-            [CGCNNLayer(atom_fea_len, self.rbf.out_dim, use_bn=use_bn) for _ in range(n_conv)]
+            [CGCNNLayer(atom_fea_len, self.rbf.out_dim, use_bn=use_bn, agg=agg) for _ in range(n_conv)]
         )
         self.fc_readout = nn.Linear(atom_fea_len, atom_fea_len)
         self.fc_out = nn.Linear(atom_fea_len, n_classes)
@@ -220,8 +222,10 @@ class GeoShellGDyNet(nn.Module):
 
 
 VARIANTS = {
-    "canonical_h16": {"kind": "canonical", "atom_fea_len": 16},
-    "canonical_pm_h46": {"kind": "canonical", "atom_fea_len": 46},
+    "canonical_h16": {"kind": "canonical", "atom_fea_len": 16, "agg": "mean"},
+    "canonical_sum_h16": {"kind": "canonical", "atom_fea_len": 16, "agg": "sum"},
+    "canonical_pm_h46": {"kind": "canonical", "atom_fea_len": 46, "agg": "mean"},
+    "canonical_sum_h46": {"kind": "canonical", "atom_fea_len": 46, "agg": "sum"},
     "geoshell_h16": {"kind": "geoshell", "atom_fea_len": 8, "width_mult": 2},
     "geoshell_h32": {"kind": "geoshell", "atom_fea_len": 16, "width_mult": 2},
     "wo_so3_geo": {"kind": "geoshell", "atom_fea_len": 16, "width_mult": 2, "use_so3_geo": False},
